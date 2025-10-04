@@ -1,0 +1,117 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="app.ItemDetailPage"
+             Title="Detalji o proizvodu"
+             BackgroundImageSource="categories.jpg">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="15" Spacing="25">
+            <!-- Slika proizvoda -->
+            <Image Source="{Binding ImageUrl}"
+                   HeightRequest="250"
+                   HorizontalOptions="Center"
+                   Margin="0,20,0,0" 
+                   Aspect="AspectFill" />
+
+            <!-- Naziv proizvoda -->
+            <Label Text="{Binding Name}"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   TextColor="Black" />
+
+            <!-- Opis proizvoda -->
+            <Label Text="{Binding Description}"
+                   FontSize="18"
+                   LineBreakMode="WordWrap"
+                   TextColor="#4F4F4F" />
+
+            <!-- Cijena proizvoda -->
+            <Label Text="{Binding Price, StringFormat='{0:C}'}"
+                   FontSize="22"
+                   FontAttributes="Bold"
+                   TextColor="Green"
+                   HorizontalTextAlignment="Center" />
+
+            <!-- Ikonica za dodavanje u korpu -->
+            <Image Source="korpa.png"
+                   HeightRequest="50"
+                   WidthRequest="50"
+                   HorizontalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnAddToCartTapped" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <!-- Separator za bolju organizaciju -->
+            <BoxView Color="#E0E0E0" HeightRequest="1" Margin="0,20,0,20" />
+
+            <!-- Naslov recenzija -->
+            <Label Text="Recenzije"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   Margin="0,10,0,5" />
+
+            <!-- Lista recenzija -->
+            <CollectionView x:Name="ReviewsCollectionView"
+                            ItemsLayout="VerticalList">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="15"
+                               Margin="5"
+                               BorderColor="#E0E0E0"
+                               CornerRadius="15"
+                               BackgroundColor="White"
+                               HasShadow="True">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Username}"
+                                       FontAttributes="Bold"
+                                       FontSize="16"
+                                       TextColor="#333" />
+                                <Label Text="{Binding Comment}"
+                                       FontSize="14"
+                                       TextColor="#555"
+                                       LineBreakMode="WordWrap" />
+                                <Label Text="{Binding Rating, StringFormat='Ocjena: {0}'}"
+                                       FontSize="14"
+                                       TextColor="#4CAF50" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Separator između recenzija i sekcije za dodavanje recenzije -->
+            <BoxView Color="#E0E0E0" HeightRequest="1" Margin="0,20,0,20" />
+
+            <!-- Sekcija za dodavanje recenzija -->
+            <VerticalStackLayout x:Name="ReviewSection"
+                                  IsVisible="{Binding IsLoggedUser}"
+                                  Spacing="15"
+                                  Padding="10">
+                <Label Text="Dodaj recenziju"
+                       FontSize="22"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center" />
+
+                <Entry x:Name="ReviewCommentEntry"
+                       Placeholder="Unesite sadrzaj vase recenzije"
+                       Margin="0,5,0,0" />
+
+                <Entry x:Name="ReviewRatingEntry"
+                       Placeholder="Ocjena (1-5)"
+                       Keyboard="Numeric"
+                       Margin="0,5,0,0" />
+
+                <Button Text="Postavi recenziju"
+                        Clicked="OnSubmitReviewClicked"
+                        BackgroundColor="#C5676B"
+                        TextColor="White"
+                        CornerRadius="10"
+                        HeightRequest="45"
+                        HorizontalOptions="Center" />
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,66 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="app.AllCategoriesPage"
+             Title="Sve kategorije"
+             Padding="10"
+             BackgroundImageSource="categories.jpg">
+
+    <ContentPage.Content>
+        <VerticalStackLayout Spacing="15">
+            <!-- Naslov stranice -->
+            <Label Text="Sve kategorije"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="#444"
+                   HorizontalOptions="Center"
+                   Margin="0,20,0,10" />
+
+            <!-- Pretraga kategorija -->
+            <SearchBar x:Name="SearchBar"
+                       Placeholder="Pretraži kategorije..."
+                       TextChanged="OnSearchBarTextChanged"
+                       CancelButtonColor="#666"
+                       FontSize="16" />
+
+            <!-- Lista kategorija -->
+            <CollectionView x:Name="CategoriesCollectionView"
+                            SelectionMode="Single"
+                            SelectionChanged="OnCategorySelected"
+                            Margin="0,10,0,0">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="12"
+                               Margin="5"
+                               BorderColor="#E0E0E0"
+                               CornerRadius="15"
+                               BackgroundColor="White"
+                               HasShadow="True">
+                            <VerticalStackLayout Spacing="8" HorizontalOptions="Fill" VerticalOptions="Fill">
+                                <!-- Slika kategorije -->
+                                <Image Source="{Binding ImageUrl}"
+                                       HeightRequest="100"
+                                       Aspect="AspectFill"
+                                       HorizontalOptions="Center" />
+                                <!-- Naziv kategorije -->
+                                <Label Text="{Binding Name}"
+                                       FontSize="20"
+                                       FontAttributes="Bold"
+                                       TextColor="#333"
+                                       HorizontalOptions="Center" />
+                                <!-- Opis kategorije -->
+                                <Label Text="{Binding Description}"
+                                       FontSize="14"
+                                       TextColor="#666"
+                                       HorizontalOptions="Center"
+                                       LineBreakMode="TailTruncation" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ContentPage.Content>
+</ContentPage>

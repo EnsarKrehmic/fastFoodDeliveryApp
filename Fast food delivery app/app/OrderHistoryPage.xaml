@@ -1,0 +1,95 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="app.OrderHistoryPage"
+             Title="Order History"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundImageSource="categories.jpg">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="HeaderLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="24" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+            </Style>
+            <Style x:Key="ButtonStyle" TargetType="Button">
+                <Setter Property="CornerRadius" Value="20" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="Padding" Value="10" />
+            </Style>
+            <Style x:Key="RemoveButtonStyle" TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+                <Setter Property="BackgroundColor" Value="Red" />
+            </Style>
+            <Style x:Key="UpdateButtonStyle" TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+                <Setter Property="BackgroundColor" Value="DarkOrange" />
+            </Style>
+            <Style x:Key="ArrivedButtonStyle" TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+                <Setter Property="BackgroundColor" Value="YellowGreen" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout Padding="10">
+        <Label Text="Historija narudžbi" Style="{StaticResource HeaderLabelStyle}" />
+        <Picker x:Name="StatusPicker"
+                Title="Filtrirajte narudžbe po statusu"
+                TextColor="Black"
+                SelectedIndexChanged="OnStatusPickerSelectedIndexChanged">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>All</x:String>
+                    <x:String>Narudžba je u procesu pakovanja</x:String>
+                    <x:String>Narudžba je poslana</x:String>
+                    <x:String>Narudžba je dostavljena</x:String>
+                    <x:String>Narudžba je otkazana</x:String>
+                    <x:String>Narudžba je preuzeta</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <CollectionView x:Name="OrdersCollectionView" SelectionChanged="OnOrderSelected">
+            <CollectionView.EmptyView>
+                <StackLayout Padding="20" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+                    <Label Text="Nema narudžbi za prikaz." TextColor="Black" FontSize="18" HorizontalOptions="Center" />
+                </StackLayout>
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="10" Margin="5" BorderColor="LightGray" CornerRadius="10" BackgroundColor="White">
+                        <StackLayout>
+                            <Label Text="{Binding OrderDate, StringFormat='Datum narudžbe: {0:MM/dd/yyyy}'}" 
+                       FontSize="18" FontAttributes="Bold" TextColor="black" />
+                            <Label Text="{Binding TotalPrice, StringFormat='Ukupna cijena: {0:C}'}" 
+                       FontSize="16" TextColor="black" />
+                            <Label Text="{Binding Status, StringFormat='Status: {0}'}" 
+                       FontSize="16" TextColor="black" />
+                            <CollectionView ItemsSource="{Binding OrderItems}">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout Orientation="Horizontal" Padding="5" Spacing="10">
+                                            <Image Source="{Binding ImageUrl}" WidthRequest="50" HeightRequest="50" Aspect="AspectFill" />
+                                            <StackLayout HorizontalOptions="Start">
+                                                <Label Text="{Binding Name}" FontSize="16" FontAttributes="Bold" />
+                                                <Label Text="{Binding Quantity, StringFormat='Količina {0}'}" FontSize="14" TextColor="black" />
+                                                <Label Text="{Binding Price, StringFormat='Price: {0:C}'}" FontSize="14" TextColor="Black" />
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                            <!-- Dugmad u jednom redu -->
+                            <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Center">
+                                <Button Text="Dostava zaprimljena!" Style="{StaticResource ArrivedButtonStyle}"
+                            CommandParameter="{Binding .}" Clicked="OnMarkOrderAsArrivedClicked" Padding="5" />
+                                <Button Text="Uredi status" Style="{StaticResource UpdateButtonStyle}"
+                            CommandParameter="{Binding .}" Clicked="OnUpdateOrderStatusClicked" Padding="10" />
+                                <Button Text="Ukloni" Style="{StaticResource RemoveButtonStyle}"
+                            CommandParameter="{Binding .}" Clicked="OnRemoveOrderClicked" Padding="10" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

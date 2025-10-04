@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="app.RegisterPage"
+             Title="Register"
+             BackgroundImageSource="auth.jpg"
+             Padding="0"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Content>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <!-- Enlarged Logo -->
+            <Image Source="logo.png" 
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center" 
+                   HeightRequest="120" />
+
+            <!-- Title -->
+            <Label Text="Registracija"
+                   FontSize="36"
+                   FontFamily="Montserrat"
+                   FontAttributes="Bold"
+                   TextColor="Black"
+                   HorizontalOptions="Center"
+                   VerticalOptions="CenterAndExpand"
+                   Margin="0,20,0,0"/>
+
+            <!-- Email Entry -->
+            <Frame BackgroundColor="#E0E0E0"  
+                   CornerRadius="25"
+                   Padding="0"
+                   HeightRequest="50"
+                   Margin="0,10">
+                <Entry x:Name="UsernameEntry"
+                       Placeholder="Email"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="#000000"
+                       BackgroundColor="White"  
+                       PlaceholderColor="#A0A0A0"
+                       HorizontalOptions="FillAndExpand"
+                       HeightRequest="50"/>
+            </Frame>
+
+            <!-- Password Entry -->
+            <Frame BackgroundColor="#E0E0E0"  
+                   CornerRadius="25"
+                   Padding="0"
+                   HeightRequest="50"
+                   Margin="0,10">
+                <Entry x:Name="PasswordEntry"
+                       Placeholder="******"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="#000000"
+                       BackgroundColor="white"  
+                       IsPassword="True"
+                       PlaceholderColor="#A0A0A0"
+                       HorizontalOptions="FillAndExpand"
+                       HeightRequest="50"/>
+            </Frame>
+
+            <!-- Confirm Password Entry -->
+            <Frame BackgroundColor="#E0E0E0"  
+                   CornerRadius="25"
+                   Padding="0"
+                   HeightRequest="50"
+                   Margin="0,10">
+                <Entry x:Name="ConfirmPasswordEntry"
+                       Placeholder="******"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="#000000"
+                       BackgroundColor="white"  
+                       IsPassword="True"
+                       PlaceholderColor="#A0A0A0"
+                       HorizontalOptions="FillAndExpand"
+                       HeightRequest="50"/>
+            </Frame>
+
+            <!-- Register Button -->
+            <Button Text="Napravite profil"
+                    FontSize="16"
+                    BackgroundColor="#D18588"
+                    TextColor="White"
+                    HeightRequest="50"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="0,5"
+                    Clicked="OnRegisterButtonClicked"/>
+
+            <!-- Space Bar -->
+            <BoxView HeightRequest="2" Color="Black" />
+
+            <!-- Login Link -->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
+                <Label Text="Imate profil? " 
+                       FontSize="14" 
+                       TextColor="Black" />
+                <Label Text="Prijavite se!" 
+                       FontSize="14" 
+                       TextColor="DimGrey" 
+                       FontAttributes="Bold">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnLoginTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </HorizontalStackLayout>
+
+            <!-- Loading Indicator -->
+            <ActivityIndicator x:Name="LoadingIndicator"
+                               IsRunning="False"
+                               IsVisible="False"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+
+            <!-- Error Label -->
+            <Label x:Name="ErrorLabel"
+                   TextColor="Red"
+                   IsVisible="False"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+        </VerticalStackLayout>
+    </ContentPage.Content>
+</ContentPage>

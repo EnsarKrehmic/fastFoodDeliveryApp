@@ -1,0 +1,23 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="app.OrderDetailPage"
+             Title="Order Details">
+    <StackLayout Padding="10">
+        <Label Text="Order Details" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" />
+        <Label x:Name="OrderDateLabel" FontSize="18" FontAttributes="Bold" />
+        <Label x:Name="TotalPriceLabel" FontSize="18" FontAttributes="Bold" />
+        <CollectionView x:Name="OrderItemsCollectionView">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="10" Margin="5" BorderColor="LightGray" CornerRadius="10">
+                        <StackLayout>
+                            <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold" />
+                            <Label Text="{Binding Quantity, StringFormat='Quantity: {0}'}" FontSize="16" />
+                            <Label Text="{Binding Price, StringFormat='Price: {0:C}'}" FontSize="16" />
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

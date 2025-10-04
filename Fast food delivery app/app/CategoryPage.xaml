@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="app.CategoryPage"
+             Title="{Binding Name}"
+             Padding="20"
+             BackgroundImageSource="categories.jpg">
+
+    <ContentPage.Content>
+        <VerticalStackLayout Spacing="15">
+            <Label Text="{Binding Name}" 
+                   FontSize="24" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" />
+
+            <CollectionView x:Name="CategoryItemsCollectionView" SelectionMode="Single" SelectionChanged="OnItemSelected">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10" Margin="5" BorderColor="LightGray" CornerRadius="10">
+                            <StackLayout>
+                                <Image Source="{Binding ImageUrl}" HeightRequest="100" />
+                                <Label Text="{Binding Name}" FontSize="18" HorizontalOptions="Center" />
+                                <Label Text="{Binding Price, StringFormat='{0:C}'}" FontSize="16" HorizontalOptions="Center" />
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ContentPage.Content>
+</ContentPage>

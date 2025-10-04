@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="app.SpecialOfferPage"
+             Title="{Binding Name}"
+             Padding="20">
+
+    <ContentPage.Content>
+        <VerticalStackLayout Spacing="15">
+            <Label Text="{Binding Name}" 
+                   FontSize="24" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" />
+
+            <Image Source="{Binding ImageUrl}" HeightRequest="200" HorizontalOptions="Center" />
+
+            <Label Text="{Binding Description}" FontSize="18" />
+
+            <Label Text="Original Price:" FontSize="16" FontAttributes="Bold" />
+            <Label Text="{Binding OriginalPrice, StringFormat='{0:C}'}" FontSize="16" />
+
+            <Label Text="Discounted Price:" FontSize="16" FontAttributes="Bold" TextColor="Red" />
+            <Label Text="{Binding DiscountedPrice, StringFormat='{0:C}'}" FontSize="16" TextColor="Red" />
+
+            <Button Text="Add to Cart" 
+                    FontSize="16" 
+                    BackgroundColor="#D18588" 
+                    TextColor="White" 
+                    Clicked="OnAddToCartClicked" />
+        </VerticalStackLayout>
+    </ContentPage.Content>
+</ContentPage>

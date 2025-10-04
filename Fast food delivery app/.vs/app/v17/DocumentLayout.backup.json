@@ -1,0 +1,123 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\User\\Downloads\\Fast food delivery app\\Fast food delivery app\\Fast food delivery app\\Fast food delivery app\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F499A4DC-B2D0-4DF5-A0FE-910D32E19FEB}|app\\app.csproj|c:\\users\\user\\downloads\\fast food delivery app\\fast food delivery app\\fast food delivery app\\fast food delivery app\\app\\itemdetailpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F499A4DC-B2D0-4DF5-A0FE-910D32E19FEB}|app\\app.csproj|solutionrelative:app\\itemdetailpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F499A4DC-B2D0-4DF5-A0FE-910D32E19FEB}|app\\app.csproj|c:\\users\\user\\downloads\\fast food delivery app\\fast food delivery app\\fast food delivery app\\fast food delivery app\\app\\itemdetailpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F499A4DC-B2D0-4DF5-A0FE-910D32E19FEB}|app\\app.csproj|solutionrelative:app\\itemdetailpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F499A4DC-B2D0-4DF5-A0FE-910D32E19FEB}|app\\app.csproj|c:\\users\\user\\downloads\\fast food delivery app\\fast food delivery app\\fast food delivery app\\fast food delivery app\\app\\homepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F499A4DC-B2D0-4DF5-A0FE-910D32E19FEB}|app\\app.csproj|solutionrelative:app\\homepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F499A4DC-B2D0-4DF5-A0FE-910D32E19FEB}|app\\app.csproj|c:\\users\\user\\downloads\\fast food delivery app\\fast food delivery app\\fast food delivery app\\fast food delivery app\\app\\homepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F499A4DC-B2D0-4DF5-A0FE-910D32E19FEB}|app\\app.csproj|solutionrelative:app\\homepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 205,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ItemDetailPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Downloads\\Fast food delivery app\\Fast food delivery app\\Fast food delivery app\\Fast food delivery app\\app\\ItemDetailPage.xaml.cs",
+              "RelativeDocumentMoniker": "app\\ItemDetailPage.xaml.cs",
+              "ToolTip": "C:\\Users\\User\\Downloads\\Fast food delivery app\\Fast food delivery app\\Fast food delivery app\\Fast food delivery app\\app\\ItemDetailPage.xaml.cs",
+              "RelativeToolTip": "app\\ItemDetailPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-19T13:47:33.275Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ItemDetailPage.xaml",
+              "DocumentMoniker": "C:\\Users\\User\\Downloads\\Fast food delivery app\\Fast food delivery app\\Fast food delivery app\\Fast food delivery app\\app\\ItemDetailPage.xaml",
+              "RelativeDocumentMoniker": "app\\ItemDetailPage.xaml",
+              "ToolTip": "C:\\Users\\User\\Downloads\\Fast food delivery app\\Fast food delivery app\\Fast food delivery app\\Fast food delivery app\\app\\ItemDetailPage.xaml",
+              "RelativeToolTip": "app\\ItemDetailPage.xaml",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAADAAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-01-19T13:47:05.816Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HomePage.xaml",
+              "DocumentMoniker": "C:\\Users\\User\\Downloads\\Fast food delivery app\\Fast food delivery app\\Fast food delivery app\\Fast food delivery app\\app\\HomePage.xaml",
+              "RelativeDocumentMoniker": "app\\HomePage.xaml",
+              "ToolTip": "C:\\Users\\User\\Downloads\\Fast food delivery app\\Fast food delivery app\\Fast food delivery app\\Fast food delivery app\\app\\HomePage.xaml",
+              "RelativeToolTip": "app\\HomePage.xaml",
+              "ViewState": "AgIAAMUAAAAAAAAAAAAAANAAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-01-18T16:45:49.746Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HomePage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Downloads\\Fast food delivery app\\Fast food delivery app\\Fast food delivery app\\Fast food delivery app\\app\\HomePage.xaml.cs",
+              "RelativeDocumentMoniker": "app\\HomePage.xaml.cs",
+              "ToolTip": "C:\\Users\\User\\Downloads\\Fast food delivery app\\Fast food delivery app\\Fast food delivery app\\Fast food delivery app\\app\\HomePage.xaml.cs",
+              "RelativeToolTip": "app\\HomePage.xaml.cs",
+              "ViewState": "AgIAAPwAAAAAAAAAAADwv/8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-18T16:46:14.175Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 310,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

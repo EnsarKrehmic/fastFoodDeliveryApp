@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="app.CartPage"
+             Title="Korpa"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundImageSource="categories.jpg">
+    <ContentPage.Content>
+        <StackLayout Padding="20" Spacing="15">
+            <!-- Header Section -->
+            <Label Text="SADRŽAJ KORPE"
+                   TextColor="#333"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   FontFamily="Arial"
+                   Margin="0,10,0,20"/>
+
+            <!-- Cart Items Collection -->
+            <CollectionView x:Name="CartItemsCollectionView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10"
+                               Margin="5"
+                               BorderColor="#E0E0E0"
+                               CornerRadius="15"
+                               BackgroundColor="White"
+                               HasShadow="True">
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <!-- Item Image -->
+                                <Image Source="{Binding ImageUrl}"
+                                       WidthRequest="70"
+                                       HeightRequest="70"
+                                       Aspect="AspectFill"
+                                       VerticalOptions="Center"/>
+
+                                <!-- Item Details -->
+                                <StackLayout Orientation="Vertical"
+                                             HorizontalOptions="FillAndExpand"
+                                             Spacing="5">
+                                    <Label Text="{Binding Name}"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           TextColor="#000"/>
+                                    <Label Text="{Binding Quantity, StringFormat='Kolicina: {0}'}"
+                                           FontSize="14"
+                                           TextColor="#666"/>
+                                </StackLayout>
+
+                                <!-- Price and Remove Button -->
+                                <StackLayout Orientation="Vertical"
+                                             HorizontalOptions="End"
+                                             VerticalOptions="Center"
+                                             Spacing="5">
+                                    <Label Text="{Binding Price, StringFormat='{0:C}'}"
+                                           FontSize="16"
+                                           FontAttributes="Bold"
+                                           TextColor="#4CAF50"
+                                           HorizontalOptions="End"/>
+                                    <Button Text="Ukloni"
+                                            Clicked="OnRemoveItemClicked"
+                                            CommandParameter="{Binding .}"
+                                            BackgroundColor="#E57373"
+                                            TextColor="White"
+                                            CornerRadius="15"
+                                            HeightRequest="40"
+                                            HorizontalOptions="End"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Summary Section -->
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="CenterAndExpand"
+                         Margin="0,20,0,10">
+                <Label Text="Ukupna količina: "
+                       TextColor="#333"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       FontFamily="Arial"/>
+                <Label x:Name="TotalQuantityLabel"
+                       TextColor="#333"
+                       FontSize="18"
+                       FontFamily="Arial"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="CenterAndExpand"
+                         Margin="0,0,0,20">
+                <Label Text="Ukupna cijena: "
+                       TextColor="#333"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       FontFamily="Arial"/>
+                <Label x:Name="TotalPriceLabel"
+                       TextColor="#333"
+                       FontSize="18"
+                       FontFamily="Arial"/>
+            </StackLayout>
+
+            <!-- Checkout Button -->
+            <Button Text="Naruči"
+                    Clicked="OnCheckoutClicked"
+                    BackgroundColor="#FF7043"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="20"
+                    HeightRequest="50"
+                    HorizontalOptions="Center"
+                    WidthRequest="200"
+                    VerticalOptions="EndAndExpand"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

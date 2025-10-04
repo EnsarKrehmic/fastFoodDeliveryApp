@@ -1,0 +1,286 @@
+﻿<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="app.HomePage"
+            Title="HomePage"
+            BarBackgroundColor="#C5676B"
+            BarTextColor="White"
+            SelectedTabColor="White"
+            UnselectedTabColor="LightGray"
+            NavigationPage.HasNavigationBar="False">
+
+    <!-- Home Tab -->
+    <ContentPage Title="Početna" IconImageSource="home.png"
+                 BackgroundImageSource="categories.jpg"
+                 Padding="0">
+        <Grid>
+            <!-- Definicije redova i kolona -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Search Bar i Menu Button -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Pretraživanje -->
+            <SearchBar x:Name="SearchBar" 
+                       Placeholder="Pretražite proizvode"
+                       SearchButtonPressed="OnSearchBarButtonPressed"
+                       BackgroundColor="#FFFFFF"
+                       TextColor="#333"
+                       PlaceholderColor="#999"
+                       Grid.Row="0" Grid.Column="0"
+                       Margin="10"/>
+
+            <!-- Meni dugme -->
+            <Button Clicked="OnMenuClicked"
+                    Grid.Row="0" Grid.Column="1"
+                    BackgroundColor="#C5676B"
+                    WidthRequest="50" HeightRequest="50"
+                    CornerRadius="25"
+                    Margin="10">
+                <Button.ImageSource>
+                    <FileImageSource File="menuicon.png" />
+                </Button.ImageSource>
+            </Button>
+            
+            <ScrollView Grid.Row="1" Grid.ColumnSpan="2">
+                <StackLayout Padding="20" Spacing="15">
+                    <!-- Sekcija kategorija -->
+                    <Label Text="Kategorije"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           TextColor="#444"
+                           HorizontalOptions="Center"
+                           FontFamily="arial"/>
+
+                    <!-- Razdvajanje -->
+                    <BoxView HeightRequest="2" Color="#E0E0E0" />
+
+                    <CollectionView x:Name="CategoriesCollectionView"
+                                    SelectionMode="Single"
+                                    SelectionChanged="OnCategorySelected">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical" Span="2" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Padding="10"
+                                       Margin="5"
+                                       BorderColor="#E0E0E0"
+                                       CornerRadius="15"
+                                       BackgroundColor="White"
+                                       HasShadow="True">
+                                    <StackLayout>
+                                        <Image Source="{Binding ImageUrl}"
+                                               HeightRequest="120"
+                                               Aspect="AspectFill"
+                                               VerticalOptions="Center" />
+                                        <Label Text="{Binding Name}"
+                                               FontSize="18"
+                                               FontAttributes="Bold"
+                                               TextColor="#333"
+                                               HorizontalOptions="Center" />
+                                        <Label Text="{Binding Description}"
+                                               FontSize="14"
+                                               TextColor="#666"
+                                               HorizontalOptions="Center"
+                                               LineBreakMode="TailTruncation" />
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    
+                    <!-- Sekcija specijalnih ponuda -->
+                    <Label Text="Specijalne ponude"
+                           FontSize="28"
+                           FontAttributes="Bold"
+                           TextColor="DarkRed"
+                           HorizontalOptions="Center" 
+                           VerticalOptions="Center"
+                           FontFamily="arial"/>
+
+                    <!-- Razmak -->
+                    <BoxView HeightRequest="2" Color="Black" />
+
+                    <CollectionView x:Name="SpecialOffersCollectionView"
+                                    SelectionMode="Single"
+                                    SelectionChanged="OnSpecialOfferSelected">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical" Span="2" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Padding="10"
+                                       Margin="10"
+                                       BorderColor="#E0E0E0"
+                                       CornerRadius="15"
+                                       BackgroundColor="White"
+                                       HasShadow="True">
+                                    <VerticalStackLayout Spacing="10">
+                                        <!-- Slika proizvoda -->
+                                        <Image Source="{Binding ImageUrl}" 
+                                               HeightRequest="120" 
+                                               Aspect="AspectFill" 
+                                               HorizontalOptions="Center" />
+
+                                        <!-- Naziv proizvoda -->
+                                        <Label Text="{Binding Name}" 
+                                               FontSize="18" 
+                                               FontAttributes="Bold" 
+                                               TextColor="#333" 
+                                               HorizontalOptions="Center" />
+
+                                        <!-- Cijene -->
+                                        <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
+                                            <Label Text="{Binding OriginalPrice, StringFormat='{0:C}'}" 
+                                                   FontSize="16" 
+                                                   TextColor="#999" 
+                                                   TextDecorations="Strikethrough" />
+                                            <Label Text="{Binding DiscountedPrice, StringFormat='{0:C}'}" 
+                                                   FontSize="18" 
+                                                   FontAttributes="Bold" 
+                                                   TextColor="#4CAF50" />
+                                        </HorizontalStackLayout>
+
+                                        <!-- Dugme za dodavanje u korpu -->
+                                        <Button Text="Dodaj u korpu"
+                                                Clicked="OnAddToCartClickedSpecialOffer"
+                                                CommandParameter="{Binding .}"
+                                                BackgroundColor="#FF6F61"
+                                                TextColor="White"
+                                                CornerRadius="15"
+                                                HorizontalOptions="Fill"
+                                                FontAttributes="Bold" />
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+
+                    <!-- Sekcija proizvoda -->
+                    <Label 
+                        Text="Proizvodi iz ponude" 
+                        FontSize="24" 
+                        FontAttributes="Bold" 
+                        TextColor="Black" 
+                        HorizontalOptions="Center" 
+                        VerticalOptions="Center"
+                        FontFamily="arial"/>
+
+                    <!-- Razmak -->
+                    <BoxView HeightRequest="2" Color="Black" />
+
+                    <CollectionView x:Name="ItemsCollectionView">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical" Span="2" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Padding="10"
+                                       Margin="10"
+                                       BorderColor="#E0E0E0"
+                                       CornerRadius="20"
+                                       BackgroundColor="White"
+                                       HasShadow="True">
+                                    <StackLayout Spacing="12">
+                                        <!-- Slika proizvoda -->
+                                        <Image Source="{Binding ImageUrl}"
+                                               HeightRequest="120"
+                                               Aspect="AspectFill"
+                                               VerticalOptions="Center"
+                                               Margin="5" />
+
+                                        <!-- Naziv proizvoda -->
+                                        <Label Text="{Binding Name}"
+                                               FontSize="20"
+                                               FontAttributes="Bold"
+                                               TextColor="#333"
+                                               HorizontalTextAlignment="Center" />
+
+                                        <!-- Cijena proizvoda -->
+                                        <Label Text="{Binding Price, StringFormat='{0:C}'}"
+                                               FontSize="18"
+                                               TextColor="#4CAF50"
+                                               HorizontalTextAlignment="Center" />
+
+                                        <!-- Akcije za proizvod -->
+                                        <Grid ColumnSpacing="10" HorizontalOptions="Center">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- Slika za dodavanje u korpu -->
+                                            <Image Source="korpa.png"
+                                                   HeightRequest="40"
+                                                   WidthRequest="40">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="OnAddToCartTapped"
+                                                                          CommandParameter="{Binding .}" />
+                                                </Image.GestureRecognizers>
+                                            </Image>
+
+                                            <!-- Ikonica za detalje proizvoda -->
+                                            <Image Source="details.png"
+                                                    HeightRequest="40"
+                                                    WidthRequest="40"
+                                                    Grid.Column="1">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="OnItemDetailTapped"
+                                                                          CommandParameter="{Binding .}" />
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                        </Grid>
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </ScrollView>
+
+            <!-- Sekcija dugmadi na dnu -->
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="End"
+                         Padding="10"
+                         Spacing="10"
+                         Grid.Row="2"
+                         Grid.ColumnSpan="2">
+                <Button Text="Korpa"
+                        Clicked="OnViewCartClicked"
+                        BackgroundColor="#FF7043"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        HorizontalOptions="FillAndExpand"/>
+                <Button Text="Kontrolna stranica admina"
+                        Clicked="OnGoToAdminDashboardClicked"
+                        BackgroundColor="#FF7043"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="{Binding IsAdmin}" />
+            </StackLayout>
+        </Grid>
+    </ContentPage>
+
+    <!-- Kategorije -->
+    <ContentPage Title="Kategorije" IconImageSource="cat.png" Appearing="OnGoToCategoriesClicked">
+        <StackLayout Padding="10">
+        </StackLayout>
+    </ContentPage>
+
+    <!-- Profil -->
+    <ContentPage Title="Profil" IconImageSource="logo.png" Appearing="OnProfileClicked">
+        <StackLayout Padding="10">
+        </StackLayout>
+    </ContentPage>
+
+</TabbedPage>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="app.HomePageWithCRUD"
+             Title="Admin"
+             BackgroundImageSource="landing.jpg"
+             Padding="20">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Logout" IconImageSource="logout.png" Order="Primary" Priority="0" Clicked="OnLogoutClicked" />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="25">
+            <!-- Navigacija -->
+            <Button Text="Početna stranica" 
+                    Clicked="OnGoToHomePageClicked" 
+                    BackgroundColor="#333" 
+                    TextColor="White" 
+                    CornerRadius="15" 
+                    FontAttributes="Bold" 
+                    Padding="10" />
+
+            <!-- Razmak -->
+            <BoxView HeightRequest="2" Color="Black" />
+
+            <!-- Naslov -->
+            <Label Text="Kontrolna stranica admina" 
+                       FontSize="28" 
+                       FontAttributes="Bold" 
+                       TextColor="#333" 
+                       HorizontalOptions="Center"
+                       FontFamily="arial"/>
+
+            <!-- Item List Section -->
+            <Frame BackgroundColor="White" CornerRadius="15" Padding="15" HasShadow="True">
+                <Label Text="Lista proizvoda" FontSize="22" FontAttributes="Bold" TextColor="#333" />
+                <CollectionView x:Name="ItemsCollectionView" SelectionMode="Single" SelectionChanged="OnItemSelected">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="10" Margin="5" BorderColor="#E0E0E0" CornerRadius="15" BackgroundColor="#FAFAFA" HasShadow="True">
+                                <Grid ColumnDefinitions="60, *, Auto" RowDefinitions="Auto, Auto" VerticalOptions="Center">
+                                    <!-- Image -->
+                                    <Image Source="{Binding ImageUrl}" Grid.RowSpan="2" HeightRequest="50" WidthRequest="50" Aspect="AspectFill" Margin="5" />
+
+                                    <!-- Details -->
+                                    <Label Text="{Binding Name}" FontSize="16" FontAttributes="Bold" TextColor="Black" Grid.Column="1" />
+                                    <Label Text="{Binding Description}" FontSize="14" TextColor="Gray" LineBreakMode="TailTruncation" Grid.Column="1" Grid.Row="1" />
+
+                                    <!-- Buttons -->
+                                    <StackLayout Orientation="Horizontal" Spacing="5" Grid.Column="2" Grid.RowSpan="2" VerticalOptions="Center">
+                                        <Button Text="Uredi" 
+                                                Clicked="UpdateItemButton_Clicked" 
+                                                CommandParameter="{Binding .}" 
+                                                BackgroundColor="#03DAC5" 
+                                                TextColor="White" 
+                                                FontSize="14" 
+                                                CornerRadius="15" />
+                                        <Button Text="Ukloni" 
+                                                Clicked="OnDeleteItemClicked" 
+                                                CommandParameter="{Binding .}" 
+                                                BackgroundColor="#FF5252" 
+                                                TextColor="White" 
+                                                FontSize="14" 
+                                                CornerRadius="15" />
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Frame>
+
+            <!-- Forma za dodavanje ili uređivanje proizvoda -->
+            <Frame BackgroundColor="#FFFFFF" CornerRadius="20" Padding="20" HasShadow="True">
+                <Label Text="Dodaj ili uredi proizvod" 
+                       FontSize="22" 
+                       FontAttributes="Bold" 
+                       TextColor="#333" 
+                       Margin="0,0,0,10" />
+                <VerticalStackLayout Spacing="15">
+                    <Entry x:Name="ItemNameEntry" Placeholder="Naziv proizvoda" BackgroundColor="#F3F3F3" TextColor="#333" />
+                    <Entry x:Name="ItemDescriptionEntry" Placeholder="Opis proizvoda" BackgroundColor="#F3F3F3" TextColor="#333" />
+                    <Entry x:Name="ItemPriceEntry" Placeholder="Cijena" Keyboard="Numeric" BackgroundColor="#F3F3F3" TextColor="#333" />
+                    <Entry x:Name="ItemImageUrlEntry" Placeholder="URL slike" BackgroundColor="#F3F3F3" TextColor="#333" />
+                    <Entry x:Name="ItemCategoryEntry" Placeholder="Kategorija" BackgroundColor="#F3F3F3" TextColor="#333" />
+                    <Button Text="Dodaj ili uredi" 
+                            Clicked="AddOrUpdateItemButton_Clicked" 
+                            BackgroundColor="#6200EE" 
+                            TextColor="White" 
+                            CornerRadius="15" />
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
